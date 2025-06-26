@@ -13,7 +13,7 @@ pipeline {
                 echo "Building.."
                 sh '''
                 cd myapp
-                . venv/bin/activate
+                . myenv/bin/activate
                 pip install -r requirements.txt
                 '''
             }
