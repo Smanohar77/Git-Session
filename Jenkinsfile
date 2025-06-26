@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "pipeline script using SCM"
+                echo "pipeline script using SCM huhu"
                 echo "Building.."
                 sh '''
                 echo "doing build stuff.."
