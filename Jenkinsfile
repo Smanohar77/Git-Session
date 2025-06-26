@@ -17,7 +17,8 @@ pipeline {
                 # pip install --upgrade pip
                 cd myapp
                 # pip install -r requirements.txt
-                pip3 install --user -r requirements.txt
+                pip3 install --break-system-packages --user -r requirements.txt
+
                 '''
             }
         }
