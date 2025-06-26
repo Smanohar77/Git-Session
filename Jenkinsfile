@@ -12,11 +12,11 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                // python3 -m venv venv
-                // . venv/bin/activate
-                // pip install --upgrade pip
+                # python3 -m venv venv
+                # . venv/bin/activate
+                # pip install --upgrade pip
                 cd myapp
-                // pip install -r requirements.txt
+                # pip install -r requirements.txt
                 pip3 install --user -r requirements.txt
                 '''
             }
