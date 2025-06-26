@@ -10,10 +10,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo "pipeline script using SCM"
                 echo "Building.."
                 sh '''
-                cd myapp
-                pip install -r requirements.txt
+                echo "doing build stuff.."
                 '''
             }
         }
@@ -21,9 +21,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
+                echo "doing test stuff.."
                 '''
             }
         }
