@@ -1,38 +1,25 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-            }
-      }
-    triggers {
-        pollSCM '*/5 * * * *'
-    }
+    agent any
     stages {
-        stage('Build') {
+        stage('Setup Python Environment') {
             steps {
-                echo "Building.."
                 sh '''
-                cd myapp
-                . myenv/bin/activate
-                pip install -r requirements.txt
-                '''
-            }
-        }
-        stage('Test') {
-            steps {
-                echo "Testing.."
-                sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
-                '''
-            }
-        }
-        stage('Deliver') {
-            steps {
-                echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
+                    # Step 1: Check Python version
+                    python3 --version
+                    
+                    # Step 2: Ensure venv module is available (usually comes with Python 3)
+                    python3 -m venv venv
+                    
+                    # Step 3: Activate virtual environment
+                    . venv/bin/activate
+                    
+                    # Step 4: Upgrade pip and install dependencies
+                    pip install --upgrade pip
+                    # pip install -r requirements.txt  # Optional
+                    
+                    # Step 5: Run your Python script
+                    python --version
+                    python app.py  # Or your script
                 '''
             }
         }
